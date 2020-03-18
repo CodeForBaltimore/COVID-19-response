@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import { Map, TileLayer } from "react-leaflet";
+import { Container} from 'react-bootstrap';
 
 class MapComponent extends Component {
     render() {
         return (
-            <div className='Content-Container'>
+            <Container>
                 <div className='Map-Container'>
                     <Map center={[39.299236, -76.609383]} zoom={12}>
                         <TileLayer
@@ -13,7 +14,7 @@ class MapComponent extends Component {
                         />
                     </Map>
                 </div>
-            </div>
+            </Container>
         );
     }
 }
