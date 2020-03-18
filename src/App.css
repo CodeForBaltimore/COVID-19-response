@@ -1,14 +1,15 @@
+html, body, #root { min-height: 100vh; }
+
 .App {
-    height: 100vh;
+    background-color: rgb(245, 243, 243);
+    min-height: 100vh;
 }
 
-/* Container for each page */
-.Content-Container {
+.flex {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(245, 243, 243);
+    align-items: center;
 }
 
 /* Bootstrap NavBar additional CSS */

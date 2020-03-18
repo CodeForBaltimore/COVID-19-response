@@ -1,26 +1,40 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import NaviBar from './Components/NavBar';
 import Home from './Components/Home';
 import About from './Components/About';
-import Resources from './Components/Resources';
-import MapComponent from './Components/MapComponent';
-import SomePage from './Components/SomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FoodCategory from './Components/FoodNavigation';
+import FoodDistribution from './Components/FoodCategory/FoodDistribution';
+import RestarauntInfo from './Components/FoodCategory/RestaurantInfo';
+import CovidCategory from './Components/CovidNavigation';
+import TestingCenters from './Components/CovidCategory/TestingCenters';
+import SomeNavigation from './Components/SomeNavigation';
 
 function App() {
   return (
-    <BrowserRouter>
       <div className="App">
         <NaviBar />
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/resources" component={Resources} />
-        <Route path="/map" component={MapComponent} />
-        <Route path="/somepage" component={SomePage} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/food-resources" component={FoodCategory} />
+          <Route exact path="/covid-resources" component={CovidCategory} />
+          <Route exact path="/some-resources" component={SomeNavigation} />
+        </Switch>
+
+      {/* FoodNavigation */}
+        <Switch>
+          <Route exact path="/food-resources/food-distribution" component={FoodDistribution} />
+          <Route exact path="/food-resources/restaurant-info" component={RestarauntInfo} />
+        </Switch>
+      {/* CovidNavigation */}
+        <Switch>
+          <Route exact path="/covid-resources/testing-centers" component={TestingCenters} />
+        </Switch>
+      {/* SomeNavigation */}
       </div>
-    </BrowserRouter>
   );
 }
 

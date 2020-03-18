@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 
-class About extends Component {
+class FoodDistribution extends Component {
     render() {
         return (
             <Container className='flex'>
-                <h1>I'm also page.</h1>
+                <h1>Information about food distribution sites.</h1>
             </Container>
         );
     }
 }
 
-export default About;
+export default FoodDistribution;
