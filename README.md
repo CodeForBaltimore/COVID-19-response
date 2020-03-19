@@ -10,6 +10,7 @@ We've included a `docs` folder with a template [Tech Spec](/docs/Tech_Spec.md) a
 
 ## Setup
 This project uses Create-React-App for the frontend. To run locally you will:
+- Install [Node.js](https://nodejs.org/en/download/) if necessary
 - clone the repo
 - run `npm install` to install dependencies 
 - run `npm start` to start a local instance that can be accessed from `localhost:3000`
