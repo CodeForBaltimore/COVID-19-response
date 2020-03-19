@@ -1,0 +1,12 @@
+heyBuddy:
+    handler: lambda/handlers/heyBuddy.handler
+    events: 
+        - http: GET /heybuddy
+anotherOne:
+    handler: lambda/handlers/heyBuddy.another
+    events:
+        - http: GET /another
+dataEntry:
+    handler: lambda/handlers/dataEntry.handler
+    events:
+        - http: POST /dataEntry

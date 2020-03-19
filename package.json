@@ -6,15 +6,24 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "aws-sdk": "^2.639.0",
+    "axios": "0.19.2",
     "bootstrap": "^4.4.1",
+    "csvtojson": "^2.0.10",
+    "dotenv": "8.2.0",
+    "dynamodb-geo": "^0.4.0",
     "leaflet": "^1.6.0",
+    "log4js": "^6.1.2",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.0",
     "react-leaflet": "^2.6.3",
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "serverless": "^1.66.0",
+    "uuid": "^7.0.2",
+    "zipcodes": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +45,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "serverless-domain-manager": "3.3.1",
+    "serverless-dotenv-plugin": "^2.3.2",
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^5.12.1",
+    "serverless-prune-plugin": "^1.4.2",
+    "serverless-s3-local": "^0.5.4",
+    "serverless-stage-manager": "^1.0.5"
   }
 }

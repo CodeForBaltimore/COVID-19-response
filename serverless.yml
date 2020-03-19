@@ -1,0 +1,77 @@
+service: covid-19-response
+
+custom:
+    prune:
+      automatic: true
+      number: 3
+  
+    stages:
+      - local
+      - dev
+      - staging
+      - prod
+    serverless-offline:
+      port: 3000
+    s3:
+      port: 5000
+      directory: /tmp
+    dynamodb:
+      start:
+        port: 4000
+        inMemory: true
+        migrate: true
+      stages:
+        -local
+provider:
+    name: aws
+    runtime: nodejs12.x
+    stage: ${env:STAGE}
+    region: ${env:REGION}
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "s3:PutObject"
+        Resource:
+          Fn::Join:
+            - ""
+            - - "arn:aws:s3:::"
+              - "Ref": "ServerlessDeploymentBucket"
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:*"
+        Resource: 
+          - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/*"
+          - "/*"
+plugins:
+  - serverless-domain-manager
+  - serverless-prune-plugin
+  - serverless-stage-manager
+  - serverless-s3-local
+  - serverless-dynamodb-local
+  - serverless-offline
+  - serverless-dotenv-plugin
+functions:
+    - '${file(lambda/lambda.serverless.yml)}'
+resources:
+    Resources:
+        baltimoreResourcesTable:
+            Type: AWS::DynamoDB::Table
+            Properties:
+                TableName: baltimoreResourcesTable
+                KeySchema:
+                    - AttributeName: id
+                      KeyType: HASH
+                    - AttributeName: title
+                      KeyType: RANGE
+                ProvisionedThroughput:
+                    ReadCapacityUnits: 1
+                    WriteCapacityUnits: 1
+                AttributeDefinitions:
+                    - AttributeName: id
+                      AttributeType: N 
+                    - AttributeName: title
+                      AttributeType: S 
+        InboundResourceData:
+            Type: AWS::S3::Bucket 
+            Properties:
+                BucketName: baltimore-resources-data.hpii
